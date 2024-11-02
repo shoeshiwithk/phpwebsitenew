@@ -62,6 +62,11 @@ nav{
 .practical  h2, .pracwithwallpaper h2{
     color: #714696;
 }
+.practical::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 .written1 p, .written2 p, .pracwithwallpaper p, .practical p{
     font-family: sans-serif;
 
