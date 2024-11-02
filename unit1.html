@@ -1,0 +1,650 @@
+<html>
+    <head> 
+        <title>Learning PHP</title>
+        <link rel="stylesheet" href="unit.css">
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav_logo"><img src="logo.png" style="height: 70px;">
+            </div>
+            <ul class="nav_links">
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="unit2.html">Unit 2</a></li>
+                <li class="link"><a href="unit3.html">Unit 3</a></li>
+                <li class="link"><a href="unit4.html">Unit 4</a></li>
+            </ul>
+        </nav>
+        <div class="practical" style="padding-top: 110px;">
+            
+            <h1>Introduction to web Applications</h1><br>
+            
+            <h2>Client-side scripting vs Server-side scripting</h2>
+            <div class="written1">
+                <br><span>Client-Side Scripting</span><br><br>
+                <p>
+                <span>Definition:</span><br>
+                Client-side scripting refers to scripts that are executed on the user's browser rather than on the server. This includes code that runs after a webpage is loaded, primarily enhancing user experience and interaction.<br><br>
+                <span>Languages:</span><br>
+                Common languages include:<br>
+                JavaScript: The most widely used client-side scripting language.<br>
+                HTML/CSS: While not scripts per se, they structure and style web content.<br>
+                Execution: The browser interprets and executes the code after downloading it from the server.<br><br>
+                <span>Characteristics:</span><br>
+                Immediate Feedback: Changes can be made instantly without a page reload, improving user experience (e.g., form validation, dynamic content updates).<br>
+                Reduced Server Load: Offloading some processing to the client can reduce server strain and improve performance.<br>
+                Limited Access to Resources: Client-side scripts cannot directly interact with databases or server files for security reasons. They rely on server-side scripts for such operations.<br>
+                Browser Dependency: Different browsers may interpret scripts differently, leading to compatibility issues.<br><br>
+                <span>Examples:</span><br>
+                Form validation (checking user input before submission).<br>
+                Interactive features (e.g., image sliders, modals).<br>
+                AJAX requests to fetch data without reloading the page.<br>
+                </p>
+            </div>
+            <div class="written2">
+                <span>Server-Side Scripting</span><br><br>
+                <p>
+                <span>Definition:</span><br> Server-side scripting involves scripts executed on the server before the result is sent to the client's browser. It generates dynamic content and handles data processing.<br><br>
+
+                <span>Languages:</span><br> Common server-side languages include:<br>
+
+                PHP<br>
+                Python<br>
+                Ruby<br>
+                Java<br>
+                Node.js (JavaScript on the server)<br>
+                Execution: The server processes the script and sends the resulting HTML (or other content) to the client's browser.<br><br>
+
+                <span>Characteristics:</span><br>
+
+                Database Interaction: Server-side scripts can access databases, handle user authentication, and manage sessions securely.<br>
+                Greater Control: Developers can control the entire environment, allowing complex logic and resource management.<br>
+                Increased Server Load: All processing occurs on the server, which can increase load and response times with high traffic.<br>
+                Security: Sensitive operations (like database transactions) are securely handled on the server, making them less vulnerable to client-side attacks.<br><br>
+                <span>Examples:</span><br>
+
+                User registration and login processes.<br>
+                Generating web pages with dynamic content based on user data.<br>
+                Processing form submissions and storing data in a database.<br></p>
+
+            </div>
+
+
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:700px; background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h2>Local Servers and Remote servers</h2>
+            <br>
+            <span>Local Servers</span><br><br>
+            <p>
+
+                <span>Definition</span><br>
+                Local servers are set up and run on a user's local machine or within a private network. They are typically used for development, testing, and staging before deployment to a production environment.<br><br>
+
+                <span>Characteristics</span><br>
+                Accessibility: Local servers are only accessible from the machine they are installed on or within the same local network.<br>
+                Speed: Since they are on the local machine, response times are usually faster, as there is no internet latency.<br>
+                Development Environment: Ideal for developers to build and test applications without affecting the live environment.<br>
+                Configuration: Easier to configure and customize based on individual developer needs.<br><br>
+                <span>Common Uses</span><br>
+                Web Development: Using tools like XAMPP, WAMP, or MAMP to develop PHP applications, for example.<br>
+                Testing: Running applications in a controlled environment to debug issues before deployment.
+                Learning: Useful for individuals learning programming and web development.<br><br>
+                <span>Limitations</span><br>
+                Limited Accessibility: Cannot be accessed from outside the local network without additional configuration (e.g., port forwarding).<br>
+                Resource Limitations: Dependent on the local machine’s hardware capabilities.<br>
+
+            </p>
+            <br><span>Remote servers</span><br><br>
+            <p>
+                <span>Definition</span><br>
+                Remote servers are hosted on the internet and can be accessed from anywhere, provided you have internet connectivity. These servers are maintained by hosting providers.<br><br>
+
+                <span>Characteristics</span><br>
+                Global Accessibility: Can be accessed from anywhere, allowing multiple users to interact with the application simultaneously.<br>
+                Scalability: Many hosting services offer scalable resources, allowing you to increase capacity as needed.<br>
+                Maintenance: Typically managed by the hosting provider, which can include backups, security updates, and server monitoring.<br>
+                Types of Hosting: Can include shared, VPS (Virtual Private Server), dedicated, or cloud hosting.<br><br>
+                <span>Common Uses</span><br>
+                Production Environment: Hosting live applications, websites, and databases that users interact with.<br>
+                Collaboration: Teams can work on shared applications and data from different locations.<br>
+                Backup and Recovery: Remote servers often provide features for data backup and disaster recovery.<br><br>
+                <span>Limitations</span><br>
+                Latency: Response times may be slower due to internet connection speeds and distance from the server.<br>
+                Cost: Remote hosting typically incurs ongoing costs based on usage and resource allocation.<br>
+                Less Control: Users may have limited control over the server environment compared to a local server.<br>
+            </p>
+
+        </div>
+        <div class="practical">
+            <h2>Static website vs Dynamic website</h2>
+            <div class="written1">
+                <br>
+                <span>Static Website</span><br><br>
+                <p>
+                    <span>Definition</span><br>
+                    Static websites consist of fixed content that does not change based on user interactions. Each page is a separate HTML file, and the content is the same for every visitor.<br><br>
+
+                    <span>Characteristics</span><br>
+                    Content: Content is hardcoded into HTML files. Changes require manual editing of the files.
+                    Loading Speed: Generally faster to load because the server delivers pre-built HTML pages without any processing.<br>
+                    Hosting: Easier to host since they require only basic web hosting services.<br>
+                    Interactivity: Limited interactivity; typically only displays information without user-driven content changes.<br><br>
+                    <span>Common Uses</span><br>
+                    Portfolio Websites: Showcasing work or services.<br>
+                    Landing Pages: Single pages designed for marketing campaigns.<br>
+                    Documentation Sites: Providing information without the need for user interaction.<br><br>
+                    <span>Advantages</span><br>
+                    Simplicity: Easier to create and maintain for small websites.<br>
+                    Performance: Faster load times due to the absence of server-side processing.<br>
+                    Security: Less vulnerable to certain types of attacks, as there are no databases or user input handling.<br><br>
+                    <span>Disadvantages</span><br>
+                    Limited Functionality: Cannot provide personalized experiences or dynamic content.<br>
+                    Maintenance: Requires more effort to update content since changes need to be made on a per-page basis.<br>
+                </p>
+
+            </div>
+            <div class="written2">
+                <span>Dynamic Website</span><br><br>
+                <p>
+                    <span>Definition</span><br>
+                    Dynamic websites generate content dynamically based on user interactions, preferences, or data stored in a database. The content can change for each user or session.<br><br>
+
+                    <span>Characteristics</span><br>
+                    Content: Content is generated in real-time, often using server-side languages (e.g., PHP, Python, Ruby) and databases (e.g., MySQL).<br>
+                    Loading Speed: Can be slower due to server-side processing and database queries, but can be optimized.<br>
+                    Interactivity: Highly interactive, allowing user engagement (e.g., forms, logins, personalized content).<br>
+                    Maintenance: Content can often be managed through a content management system (CMS), making updates easier.<br>
+                    Common Uses<br>
+                    E-commerce Sites: Allowing users to browse products, add to carts, and make purchases.<br>
+                    Social Media Platforms: Dynamic content based on user activity and preferences.<br>
+                    News Websites: Frequently updated content that may vary for different users.<br><br>
+                    <span>Advantages</span><br>
+                    Personalization: Can provide tailored experiences based on user data and interactions.<br>
+                    Flexibility: Easier to manage and update content via a CMS without technical knowledge.<br>
+                    Rich Functionality: Capable of supporting complex applications, such as forums and user accounts.<br><br>
+                    <span>Disadvantages</span><br>
+                    Complexity: More complex to develop and maintain than static websites.<br>
+                    Performance: May require optimization to improve load times due to server processing.<br>
+                    Security Risks: Increased risk of vulnerabilities due to databases and user interactions.<br>
+                </p>
+
+            </div>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top: 790px; background-color: rgba(209, 113, 30, 0.60);">
+            <h2>Embedding PHP in web pages</h2><br>
+            <span>1. Use the Correct File Extension</span>
+            <p>
+                PHP code must be placed in files with a .php extension. If your file is named index.html, rename it to index.php. This allows the server to interpret and execute the PHP code.<br></p>
+
+                <span>2. Basic PHP Syntax</span>
+                <p>
+                PHP code is embedded within special tags: &lt;?php ... ?&gt;. Here's how you can include PHP within an HTML structure.<br>
+<br>
+                Example<br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html lang="en"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;meta charset="UTF-8"&gt;<br>
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                &lt;title&gt;Embedding PHP in HTML&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+<br>
+                &lt;h1&gt;Welcome to My Website&lt;/h1&gt;<br>
+<br>
+                &lt;?php<br>
+                // This is a simple PHP block<br>
+                echo "&lt;p&gt;Hello, World! This is generated by PHP.&lt;/p&gt;";<br>
+                ?&gt;<br>
+<br>
+                &lt;p&gt;This paragraph is in HTML.&lt;/p&gt;<br>
+<br>
+                &lt;?php<br>
+                // PHP can also handle logic<br>
+                $timeOfDay = date("H");<br>
+<br>
+                if ($timeOfDay &lt; 12) {<br>
+                echo "&lt;p&gt;Good morning!&lt;/p&gt;";<br>
+                } elseif ($timeOfDay &lt; 18) {<br>
+                echo "&lt;p&gt;Good afternoon!&lt;/p&gt;";<br>
+                } else {<br>
+                echo "&lt;p&gt;Good evening!&lt;/p&gt;";<br>
+                }<br>
+                ?&gt;<br>
+<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+                Explanation of the Code<br>
+                File Extension: The file should be saved with a .php extension to be processed by the PHP interpreter.<br>
+
+                HTML Structure: The document starts with a standard HTML structure.<br>
+
+                PHP Code Blocks: PHP code is inserted within &lt;?php ... ?&gt; tags.<br>
+
+                echo statements output text or HTML content.<br>
+                You can include PHP variables and logic, allowing for dynamic content.<br></p>
+                <span>3. Running PHP Code</span>
+                <p>
+                To run PHP code, you'll need a server environment:<br>
+<br>
+                Local Server: You can set up a local server using software like XAMPP, WAMP, or MAMP. Place your .php files in the server's root directory (e.g., htdocs for XAMPP).<br>
+                Remote Server: Upload your PHP files to a web hosting server that supports PHP.<br></p>
+                <span>4. Common Use Cases</span>
+                <p>
+                Dynamic Content: Use PHP to fetch and display content from a database.<br>
+                Forms: Process form submissions using PHP to handle user input.<br>
+                Session Management: Keep track of user sessions and states.<br>
+            </p>
+        </div>
+        <div class="practical">
+            <h1>PHP Basics</h1>
+            <h2>Tokens</h2>
+            <p>In PHP, tokens are the smallest units of code that the PHP parser recognizes. When PHP code is executed, it is broken down into these tokens, which are then interpreted. <br><br></p>
+            <span>Why tokens matter?</span>
+            <p>
+                Parsing: When writing parsers or interpreters, knowing how to identify and manipulate tokens is essential.<br>
+                Debugging: Recognizing tokens can help you understand where errors occur in your code.<br>
+                Code Analysis: Tools that analyze PHP code for quality, performance, or security often work with tokens.<br><br>
+            </p>
+            <h2>Variable</h2>
+            <span>1. Defining Variables</span>
+            <p>
+                In PHP, a variable is defined by a dollar sign ($) followed by the variable name. The variable name can consist of letters, numbers, and underscores, but it must start with a letter or an underscore.<br><br>
+
+                Syntax:<br>
+
+                $variableName = value;<br><br>
+            </p>
+            <span>2. Variable naming rules</span>
+            <p>
+                Starts with $: Every variable must begin with a dollar sign.<br>
+                Case Sensitive: Variable names are case-sensitive. $Name and $name are different variables.<br>
+                Allowed Characters: Can include letters (a-z, A-Z), numbers (0-9), and underscores (_).<br>
+                No Spaces: Variable names cannot contain spaces or special characters (except underscore).<br><br>
+            </p>
+            <span>3.Variable types</span>
+            <p>
+                PHP is a loosely typed language, which means you don’t need to declare the variable type explicitly. The type is determined by the value assigned to the variable.<br>
+<br>
+                String: Textual data enclosed in single or double quotes.<br>
+                Integer: Whole numbers, both positive and negative.<br>
+                Float: Decimal numbers.<br>
+                Boolean: Represents true or false.<br>
+                Array: A collection of values.<br>
+                Object: An instance of a class.<br>
+                NULL: Represents a variable with no value.<br><br>
+            </p>
+            <h2>Variable Scope</h2>
+            <p>
+                Variables in PHP have different scopes, which determine where they can be accessed:<br>
+<br>
+                <span>Global Scope:</span><br> Variables declared outside any function or class. They can be accessed anywhere in the script but not inside functions unless passed explicitly.<br>
+<br>
+                $globalVar = "I am global";<br>
+<br>
+                function test(){<br>
+                global $globalVar; // Accessing global variable<br>
+                echo $globalVar;<br>
+                }<br><br>
+                <span>Local Scope:</span><br> Variables declared inside a function or method. They can only be accessed within that function.<br>
+<br>
+                function test() {<br>
+                $localVar = "I am local";<br>
+                echo $localVar;<br>
+                }<br><br>
+                <span>Static Variables:</span><br> Variables declared with the static keyword inside a function. They retain their value between function calls.<br>
+<br>
+                function counter() {<br>
+                static $count = 0;<br>
+                $count++;<br>
+                echo $count;<br>
+                }<br><br>
+            </p>
+            <h2>Constants</h2>
+            <p>
+                Constants in PHP are identifiers for simple values that remain unchanged throughout the script. Unlike variables, constants cannot be altered once they are defined. Here’s a detailed overview of PHP constants, including how to define them, types, and best practices.<br><br>
+            </p>
+            <span>Defining constants</span>
+            <p>
+                In PHP, you can define a constant using the define() function or the const keyword.<br>
+<br>
+                Using define():<br>
+                define("CONSTANT_NAME", value);<br>
+<br>
+                Using const:<br>
+                const CONSTANT_NAME = value;<br><br>
+            </p>
+            <h2>Data Types</h2>
+            <p>
+                In PHP, data types are the classifications of different types of data that a variable can hold. PHP is a dynamically typed language, meaning you don't need to declare the data type of a variable explicitly; it is determined by the value assigned to the variable. Here’s an overview of the main data types in PHP:<br><br>
+            </p>
+            <span>1. Scalar Types</span>
+            <p>
+                These are single-valued types:<br>
+<br>
+                String: A sequence of characters enclosed in single (') or double (") quotes.<br>
+
+                $name = "John Doe";<br>
+                <br>
+                Integer: A whole number, either positive or negative, without a decimal point.<br>
+
+                $age = 30;<br>
+                <br>
+                Float (or Double): A number that can contain a decimal point.<br>
+
+                $price = 19.99;<br>
+                <br>
+                Boolean: Represents two possible values: true or false.<br>
+
+                $isAvailable = true;<br><br>
+            </p>
+            <span>2. Compound Types</span>
+            <p>
+                These data types can hold multiple values:<br>
+<br>
+                Array: An ordered map that can hold multiple values under a single variable name. Arrays can be indexed or associative.<br>
+<br>
+                Indexed Array: Uses numeric indexes.<br>
+                $colors = array("red", "green", "blue");<br>
+                <br>
+                Associative Array: Uses named keys.<br>
+                $ages = array("John" => 30, "Jane" => 25);<br>
+                <br>
+                Object: An instance of a class. Objects can encapsulate data and functionality.<br>
+                class Car {<br>
+                public $color;<br>
+                public function drive() {<br>
+                echo "Driving";<br>
+                }<br>
+                }<br>
+                $myCar = new Car();<br>
+                $myCar->color = "red";<br><br>
+            </p>
+            <span>3. Special Types</span>
+            <p>
+                These are unique data types:<br>
+<br>
+                NULL: A variable with no value. It is represented by the keyword null.<br>
+                $emptyVar = null;<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0px;background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h2>Operators</h2>
+            <p>
+                In PHP, operators are special symbols that perform operations on variables and values. Operators can be classified into several categories based on their functionality. Here’s a detailed overview of the different types of operators in PHP:<br><br>
+            </p>
+            <span>1. Arithmetic Operators</span>
+            <p>
+                These operators are used for performing mathematical calculations.<br><br>
+                I. Addition (+): Adds two operands.<br>
+                $sum = $a + $b;<br>
+                <br>
+                II. Subtraction (-): Subtracts the second operand from the first.<br>
+                $difference = $a - $b;<br>
+<br>
+                III. Multiplication (*): Multiplies two operands.<br>
+                $product = $a * $b;<br>
+<br>
+                IV. Division (/): Divides the first operand by the second.<br>
+                $quotient = $a / $b;<br>
+                <br>
+                V. Modulo (%): Returns the remainder of the division of two operands.<br>
+                $remainder = $a % $b;<br><br>
+            </p>
+            <span>2. Assignment Operator</span>
+            <p>
+                These operators are used to assign values to variables.<br>
+<br>
+                I. Basic Assignment (=): Assigns the right operand to the left operand.<br>
+                $a = 5;<br>
+                <br>
+                II. Addition Assignment (+=): Adds the right operand to the left operand and assigns the result.<br>
+                $a += 5; // Equivalent to $a = $a + 5;<br>
+<br>
+                III. Subtraction Assignment (-=): Subtracts the right operand from the left operand and assigns the result.<br>
+                $a -= 2; // Equivalent to $a = $a - 2;<br>
+<br>
+                IV. Multiplication Assignment (*=): Multiplies the left operand by the right operand and assigns the result.<br>
+                $a *= 3; // Equivalent to $a = $a * 3;<br>
+                <br>
+                V. Division Assignment (/=): Divides the left operand by the right operand and assigns the result.<br>
+                $a /= 2; // Equivalent to $a = $a / 2;<br>
+                <br>
+                VI. Modulo Assignment (%=): Takes the modulo of the left operand by the right operand and assigns the result.<br>
+                $a %= 3; // Equivalent to $a = $a % 3;<br><br>
+            </p>
+            <span>3. Comparison Operator</span>
+            <p>These operators are used to compare two values.<br>
+<br>
+                I. Equal (==): Checks if two values are equal (type is ignored).<br>
+                if ($a == $b) { /*...*/ }<br>
+                <br>
+                II.Identical (===): Checks if two values are equal and of the same type.<br>
+                if ($a === $b) { /*...*/ }<br>
+                <br>
+                III. Not Equal (!=): Checks if two values are not equal.<br>
+                if ($a != $b) { /*...*/ }<br>
+<br>
+                IV. Not Identical (!==): Checks if two values are not equal or not of the same type.<br>
+                if ($a !== $b) { /*...*/ }<br>
+                <br>
+                V. Greater Than (>): Checks if the left operand is greater than the right.<br>
+                if ($a > $b) { /*...*/ }<br>
+                <br>
+                VI. Less Than (&lt;): Checks if the left operand is less than the right.<br>
+                if ($a &lt; $b) { /*...*/ }<br>
+                <br>
+                VII. Greater Than or Equal To (>=): Checks if the left operand is greater than or equal to the right.<br>
+                if ($a >= $b) { /*...*/ }<br>
+                <br>
+                VIII. Less Than or Equal To (&lt;=): Checks if the left operand is less than or equal to the right.<br>
+                if ($a &lt;= $b) { /*...*/ }<br><br>
+            </p>
+            <span>4. Logical Operators</span>
+            <p>
+                These operators are used to combine boolean expressions.<br>
+<br>
+                I. AND (&&): Returns true if both operands are true.<br>
+                if ($a && $b) { /*...*/ }<br>
+<br>
+                II. OR (||): Returns true if at least one of the operands is true.<br>
+                if ($a || $b) { /*...*/ }<br>
+<br>
+                III/ NOT (!): Inverts the boolean value of the operand.<br>
+                if (!$a) { /*...*/ }<br><br>
+            </p>
+            <span>5. Bitwise Operators</span>
+            <p>These operators operate on the binary representations of integers.<br>
+<br>
+                I. Bitwise AND (&): Performs a bitwise AND operation.<br>
+                $result = $a & $b;<br>
+<br>
+                II. Bitwise OR (|): Performs a bitwise OR operation.<br>
+                $result = $a | $b;<br>
+<br>
+                III. Bitwise XOR (^): Performs a bitwise XOR operation.<br>
+                $result = $a ^ $b;<br>
+<br>
+                IV. Bitwise NOT (~): Inverts the bits of the operand.<br>
+                $result = ~$a;<br>
+<br>
+                V. Left Shift (&lt;&lt;): Shifts the bits of the first operand to the left by the number of positions specified by the second operand.<br>
+                $result = $a &lt;&lt; 1;<br>
+<br>
+                VI. Right Shift (>>): Shifts the bits of the first operand to the right.<br>
+                $result = $a >> 1;<br><br></p>
+                <span>6. Ternary Operator</span>
+                <p>
+                    The ternary operator is a shorthand for if-else statements. It takes three operands.<br>
+<br>
+                    Syntax:<br>
+                    $result = (condition) ? value_if_true : value_if_false;<br><br>
+                </p>
+        </div>
+        <div class="practical">
+            <h1>Control Structures</h1>
+            <h2>Branching Statements</h2>
+            <span>1. If-else Statements</span>
+            <p>
+                In PHP, an if-else statement allows you to execute different blocks of code based on a condition. Here’s the basic syntax:<br>
+                if (condition) {<br>
+                    // Code to execute if the condition is true<br>
+                } else {<br>
+                    // Code to execute if the condition is false<br>
+                }<br>
+<br>
+                <span>Example</span><br>
+                Here’s a simple example that checks if a number is positive, negative, or zero:<br>
+<br>
+                $number = 10;<br>
+                <br>
+                if ($number &gt; 0) {<br>
+                    echo "The number is positive.";<br>
+                } elseif ($number &lt; 0) {<br>
+                    echo "The number is negative.";<br>
+                } else {<br>
+                    echo "The number is zero.";<br>
+                }<br><br>
+                </p>
+                <span>2. Switch</span><br>
+                <p>
+                    In PHP, a switch statement allows you to execute different blocks of code based on the value of a variable or expression. It's often used as a cleaner alternative to multiple if-else statements when dealing with multiple possible values.<br>
+<br>
+                    Syntax<br>
+                    switch (variable) {<br>
+                        case value1:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute if variable equals value1<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case value2:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute if variable equals value2<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        // More cases...<br>
+                        default:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute if variable does not match any case<br>
+                    }<br>
+<br>
+                    Example<br>
+                    Here’s an example that demonstrates how to use a switch statement to determine the day of the week based on a number:<br>
+                    $day = 3;<br>
+                    <br>
+                    switch ($day) {<br>
+                        case 1:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Monday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 2:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Tuesday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 3:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Wednesday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 4:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Thursday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 5:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Friday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 6:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Saturday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        case 7:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Sunday";<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;break;<br>
+                        default:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;echo "Invalid day";<br>
+                    }<br>
+                </p>
+
+        </div>
+        <div class="pracwithwallpaper" style="margin-top: 20px; background-color: rgba(209, 113, 30, 0.60);">
+            <h2>Looping Statements</h2><br>
+            <span>1. While loop</span>
+            <p>
+                In PHP, a while loop allows you to execute a block of code repeatedly as long as a specified condition is true. Here’s the basic syntax:<br>
+<br>
+                Syntax<br>
+                while (condition) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute while the condition is true<br>
+                }<br>
+<br>
+                Example<br>
+                Here’s a simple example that counts from 1 to 5:<br>
+                $count = 1;<br>
+                <br>
+                while ($count &lt;= 5) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo $count . "&lt;br&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$count++; // Increment the counter<br>
+                }<br><br>
+                <span>Breakdown</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;1.Initialization: The variable $count is initialized to 1.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;2.Condition: The while loop checks if $count is less than or equal to 5.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;3.Execution: If the condition is true, the code inside the loop executes, printing the current value of $count.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;4.Increment: After printing, $count is incremented by 1.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;5.Termination: When $count becomes 6, the condition evaluates to false, and the loop stops.<br><br>
+            </p>
+            <span>2. Do-While loop</span>
+            <p>
+                In PHP, a do-while loop is similar to a while loop, but it guarantees that the block of code will execute at least once before the condition is tested. The syntax for a do-while loop is as follows:<br>
+<br>
+                Syntax<br>
+                do {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute<br>
+                } while (condition);<br>
+<br>
+                Example<br>
+                Here's a simple example that counts from 1 to 5 using a do-while loop:<br>
+                $count = 1;<br>
+                <br>
+                do {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo $count . "&lt;br&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$count++; // Increment the counter<br>
+                } while ($count &lt;= 5);<br>
+<br>
+                <span>Breakdown</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;1.Initialization: The variable $count is initialized to 1.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;2.Execution: The code inside the do block executes first, printing the current value of $count.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;3.Increment: After printing, $count is incremented by 1.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;4.Condition Check: After executing the code block, the condition ($count &lt;= 5) is evaluated.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;5.Termination: If the condition is true, the loop continues; if false, the loop terminates.<br><br>
+                </p>
+                <span>3. For loop</span>
+                <p>
+                    In PHP, a for loop is a control structure that allows you to execute a block of code a specific number of times. It consists of three parts: initialization, condition, and increment/decrement. Here's the basic syntax:<br>
+<br>
+                    Syntax<br>
+                    for (initialization; condition; increment/decrement) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute<br>
+                    }<br>
+<br>
+                    Example<br>
+                    Here’s a simple example that counts from 1 to 5:<br>
+                    for ($i = 1; $i &lt;= 5; $i++) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;echo $i . "&lt;br&gt;";<br>
+                    }<br>
+<br>
+                    <span>Breakdown</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;1.Initialization: $i is initialized to 1.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2.Condition: The loop continues as long as $i is less than or equal to 5.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;3.Increment: After each iteration, $i is incremented by 1 ($i++).<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;4.Execution: The code inside the loop executes for each value of $i from 1 to 5.<br>
+                    </p>
+
+        </div>
+        <div class="practical">
+            <h2>File inclusion statement</h2>
+            <p><br>
+                In PHP, file inclusion allows you to include the content of one PHP file into another. This is useful for organizing code, reusing functions, or managing templates. There are several ways to include files, each with slightly different behavior. Here are the main methods:<br><br>
+            </p>
+                <span>1. include</span>
+            <p>
+                The include statement includes and evaluates the specified file. If the file is not found, a warning is issued, but the script will continue executing.<br>
+                include 'filename.php';<br>
+            <br></p>
+                <span>2. require</span>
+            <p>
+                The require statement is similar to include, but it will produce a fatal error and halt the script if the specified file is not found.<br>
+                require 'filename.php';<br>
+            <br></p>
+        </div>
+
+    </body>
+    </html>

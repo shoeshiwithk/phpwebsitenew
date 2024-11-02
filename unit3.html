@@ -1,0 +1,587 @@
+<html>
+    <head> 
+        <title>Learning PHP</title>
+        <link rel="stylesheet" href="unit.css">
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav_logo"><img src="logo.png" style="height: 70px;">
+            </div>
+            <ul class="nav_links">
+                <li class="link"><a href="unit1.html">Unit 1</a></li>
+                <li class="link"><a href="unit2.html">Unit 2</a></li>
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="unit4.html">Unit 4</a></li>
+            </ul>
+        </nav>
+        <div class="practical" style="padding-top: 110px;">
+            <h1>Forms</h1>
+            <h2>Working with HTML Form controls and PHP</h2>
+            <p>
+                Working with HTML form controls and PHP is a common task for creating dynamic web applications. Here's a guide on how to set up an HTML form, handle user input with PHP, and display or process the data.<br>
+<br></p>
+                <span>1. Creating an HTML Form<br></span>
+                <p>
+                An HTML form allows users to input data. Here’s a simple example of a form with various input types:<br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html lang="en"&gt;<br>
+                &lt;head&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Form Example&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Contact Form&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;form action="process.php" method="post"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="name"&gt;Name:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="name" name="name" required&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="email" id="email" name="email" required&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="message"&gt;Message:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;textarea id="message" name="message" required&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="gender"&gt;Gender:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;select id="gender" name="gender"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="male"&gt;Male&lt;/option&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="female"&gt;Female&lt;/option&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value="other"&gt;Other&lt;/option&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/select&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="submit" value="Submit"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+<br></p>
+                <span>2. Processing the Form Data with PHP</span>
+                <p>
+                In the process.php file, you can retrieve and process the submitted data:<br>
+                &lt;?php<br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Retrieve and sanitize form inputs<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$name = htmlspecialchars(trim($_POST['name']));<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$email = htmlspecialchars(trim($_POST['email']));<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$message = htmlspecialchars(trim($_POST['message']));<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$gender = htmlspecialchars(trim($_POST['gender']));<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Example of processing the data (e.g., saving to a database, sending an email)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;h1&gt;Form Submitted Successfully!&lt;/h1&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;p&gt;Name: $name&lt;/p&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;p&gt;Email: $email&lt;/p&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;p&gt;Message: $message&lt;/p&gt;";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;p&gt;Gender: $gender&lt;/p&gt;";<br>
+                } else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "&lt;h1&gt;No data submitted!&lt;/h1&gt;";<br>
+                }<br>
+                ?&gt;<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0px;background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h2>Super global Variable</h2>
+            <p>
+                In PHP, superglobal variables are built-in global arrays that provide access to various types of information, including form data, session data, cookies, and server information. Superglobals can be accessed from any part of the script without needing to declare them as global.<br>
+<br>
+                Here’s an overview of the main superglobal variables:<br>
+                <br></p>
+                <span>1. $_GET<br></span>
+                <p>
+                This superglobal is used to collect data sent via URL parameters in a GET request. It is an associative array.<br>
+                <br>
+                Example:<br>
+                // URL: example.com/page.php?name=John&age=25<br>
+                <br>
+                $name = $_GET['name']; // John<br>
+                $age = $_GET['age'];   // 25<br>
+<br></p>
+                <span>2. $_POST<br></span>
+                <p>
+                This superglobal is used to collect data sent via form submissions using the POST method. It is also an associative array.<br>
+                <br>
+                Example:<br>
+                // Assume a form is submitted with method="post"<br>
+                $name = $_POST['name']; // Retrieved from form input<br>
+                $email = $_POST['email']; // Retrieved from form input<br>
+<br></p>
+                <span>3. $_REQUEST<br></span>
+                <p>
+                This superglobal combines data from $_GET, $_POST, and $_COOKIE. It provides a way to access data regardless of the method used to submit it.<br>
+                <br>
+                Example:<br>
+                $name = $_REQUEST['name']; // Can come from either $_GET or $_POST<br>
+<br></p>
+                <span>4. $_SESSION<br></span>
+                <p>
+                This superglobal is used to store session variables, which can persist across multiple pages. To use sessions, you must start a session with session_start().<br>
+                <br>
+                Example:<br>
+                session_start();<br>
+                $_SESSION['username'] = 'JohnDoe'; // Set session variable<br>
+                echo $_SESSION['username']; // Retrieve session variable<br>
+<br></p>
+                <span>5. $_COOKIE<br></span>
+                <p>
+                This superglobal is used to access cookies stored on the client’s browser. Cookies are usually set using the setcookie() function.<br>
+                <br>
+                Example:<br>
+                // Set a cookie<br>
+                setcookie('user', 'John', time() + 3600); // 1 hour expiration<br>
+                <br>
+                // Access the cookie<br>
+                if (isset($_COOKIE['user'])) {<br>
+                    echo $_COOKIE['user']; // Outputs: John<br>
+                }<br>
+<br></p>
+                <span>6. $_FILES<br></span>
+                <p>
+                This superglobal is used to handle file uploads. It contains information about files uploaded through a form.<br>
+                <br>
+                Example:<br>
+                // HTML form with enctype="multipart/form-data"<br>
+                if ($_SERVER['REQUEST_METHOD'] == 'POST') {<br>
+                    $fileName = $_FILES['uploaded_file']['name'];<br>
+                    $fileTmpPath = $_FILES['uploaded_file']['tmp_name'];<br>
+                    move_uploaded_file($fileTmpPath, "uploads/$fileName");<br>
+                }<br>
+<br></p>
+                <span>7. $_SERVER<br></span>
+                <p>
+                This superglobal contains information about headers, paths, and script locations. It can provide details about the server environment.<br>
+                <br>
+                Example:<br>
+                echo $_SERVER['HTTP_USER_AGENT']; // Outputs the user's browser info<br>
+                echo $_SERVER['REQUEST_METHOD']; // Outputs the request method (GET, POST, etc.)<br>
+<br></p>
+                <span>8. $_ENV<br></span>
+                <p>
+                This superglobal contains environment variables. It can be useful for accessing server-level configurations.<br>
+                <br>
+                Example:<br>
+                echo $_ENV['HOME']; // Outputs the home directory of the user<br>
+<br></p>
+                <span>9. $_GLOBALS<br></span>
+                <p>
+                This superglobal is used to access global variables from anywhere in the script. It is an associative array that contains all global variables.<br>
+                <br>
+                Example:<br>
+                $globalVar = "I'm global!";<br>
+                function test() {<br>
+                    echo $GLOBALS['globalVar']; // Outputs: I'm global!<br>
+                }<br>
+                test();<br><br>
+            </p>
+        </div>
+        <div class="practical">
+            <h2>Importing user input</h2>
+            <p>
+                Importing user input in PHP typically involves retrieving data from HTML forms and processing it securely. Here's a step-by-step guide on how to do this effectively.<br>
+<br></p>
+                <span>Step 1: Create an HTML Form<br></span>
+                <p>
+                Start by creating an HTML form where users can enter their input.<br>
+<br></p>
+                <span>Step 2: Process User Input with PHP<br></span>
+                <p>
+                In the process.php file, you can retrieve and process the input data. Here’s an example of how to do this securely:<br>
+                &lt;?php<br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+                    // Sanitize user input<br>
+                    $name = htmlspecialchars(trim($_POST['name']));<br>
+                    $email = htmlspecialchars(trim($_POST['email']));<br>
+                    $message = htmlspecialchars(trim($_POST['message']));<br>
+                <br>
+                    // Validate the input<br>
+                    $errors = [];<br>
+                <br>
+                    if (empty($name)) {<br>
+                        $errors[] = "Name is required.";<br>
+                    }<br>
+                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {<br>
+                        $errors[] = "Invalid email format.";<br>
+                    }<br>
+                    if (empty($message)) {<br>
+                        $errors[] = "Message is required.";<br>
+                    }<br>
+                <br>
+                    // Check for errors<br>
+                    if (empty($errors)) {<br>
+                        // Process the data (e.g., save to a database, send an email)<br>
+                        echo "&lt;h1&gt;Form Submitted Successfully!&lt;/h1&gt;";<br>
+                        echo "&lt;p&gt;Name: $name&lt;/p&gt;";<br>
+                        echo "&lt;p&gt;Email: $email&lt;/p&gt;";<br>
+                        echo "&lt;p&gt;Message: $message&lt;/p&gt;";<br>
+                    } else {<br>
+                        // Display errors<br>
+                        foreach ($errors as $error) {<br>
+                            echo "&lt;p&gt;Error: $error&lt;/p&gt;";<br>
+                        }<br>
+                    }<br>
+                } else {<br>
+                    echo "&lt;h1&gt;No data submitted!&lt;/h1&gt;";<br>
+                }<br>
+                ?&gt;<br><br>
+            </p>
+            <h1>Integrating PHP and Database</h1>
+            <h2>Connecting to database</h2>
+            <p>
+                Connecting PHP to a database is a common task for web applications, allowing you to store, retrieve, and manipulate data. The most widely used database with PHP is MySQL, and the connection is typically made using the mysqli extension or PDO (PHP Data Objects). Here’s a step-by-step guide for both methods.<br><br></p>
+        </div>
+        <div class="pracwithwallpaper" style="padding-top:0px;margin-top:0; background-color: rgba(209, 113, 30, 0.60);">
+            <span>Using Mysqli</span>
+            <p>
+                    <span>Step 1: Create a Database and Table<br></span>
+                    First, ensure you have a MySQL database and a table to work with. You can create a database and a simple table using the following SQL commands:<br>
+                    CREATE DATABASE my_database;<br>
+                    <br>
+                    USE my_database;<br>
+                    <br>
+                    CREATE TABLE users (<br>
+                        id INT AUTO_INCREMENT PRIMARY KEY,<br>
+                        name VARCHAR(100) NOT NULL,<br>
+                        email VARCHAR(100) NOT NULL UNIQUE<br>
+                    );<br>
+<br>
+                    <span>Step 2: Connect to the Database<br></span>
+                    Here's how to connect to the database using mysqli:<br>
+                    &lt;?php<br>
+                    // Database connection parameters<br>
+                    $servername = "localhost";<br>
+                    $username = "your_username";<br>
+                    $password = "your_password";<br>
+                    $dbname = "my_database";<br>
+                    <br>
+                    // Create connection<br>
+                    $conn = new mysqli($servername, $username, $password, $dbname);<br>
+                    <br>
+                    // Check connection<br>
+                    if ($conn-&gt;connect_error) {<br>
+                        die("Connection failed: " . $conn-&gt;connect_error);<br>
+                    }<br>
+                    echo "Connected successfully";<br>
+                    ?&gt;<br>
+<br>
+                    <span>Step 3: Performing Database Operations<br></span>
+                    You can perform various operations like inserting data:<br>
+                    // Prepare and bind<br>
+                    $stmt = $conn-&gt;prepare("INSERT INTO users (name, email) VALUES (?, ?)");<br>
+                    $stmt-&gt;bind_param("ss", $name, $email);<br>
+                    <br>
+                    // Set parameters and execute<br>
+                    $name = "John Doe";<br>
+                    $email = "john@example.com";<br>
+                    $stmt-&gt;execute();<br>
+                    <br>
+                    echo "New record created successfully";<br>
+                    <br>
+                    // Close the statement and connection<br>
+                    $stmt-&gt;close();<br>
+                    $conn-&gt;close();<br>
+                    ?&gt;<br><br>
+            </p>
+            <h2>Making SQL queries</h2>
+            <p>
+                Making SQL queries in PHP involves using SQL statements to interact with a database, typically MySQL. Here’s a guide on how to create, read, update, and delete (CRUD) records using SQL queries in PHP with both mysqli and PDO.<br>
+<br>
+                Set Up Your Database<br>
+                Assuming you have a MySQL database and a table ready, let's say you have a users table:<br>
+                CREATE TABLE users (<br>
+                    id INT AUTO_INCREMENT PRIMARY KEY,<br>
+                    name VARCHAR(100) NOT NULL,<br>
+                    email VARCHAR(100) NOT NULL UNIQUE<br>
+                );<br>
+<br>
+                <span>Using mysqli</span><br>
+<br>
+                <span style="color: darkcyan;">1. Create (Insert) a Record<br></span>
+                &lt;?php<br>
+                $conn = new mysqli('localhost', 'your_username', 'your_password', 'your_database');<br>
+                <br>
+                if ($conn-&gt;connect_error) {<br>
+                    die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                <br>
+                // Insert a new user<br>
+                $name = "Alice";<br>
+                $email = "alice@example.com";<br>
+                $sql = "INSERT INTO users (name, email) VALUES ('$name', '$email')";<br>
+                <br>
+                if ($conn-&gt;query($sql) === TRUE) {<br>
+                    echo "New record created successfully";<br>
+                } else {<br>
+                    echo "Error: " . $sql . "&lt;br&gt;" . $conn-&gt;error;<br>
+                }<br>
+                <br>
+                $conn-&gt;close();<br>
+                ?&gt;<br>
+<br>
+                <span style="color: darkcyan;">2. Read (Select) Records<br></span>
+                $sql = "SELECT id, name, email FROM users";<br>
+                $result = $conn-&gt;query($sql);<br>
+                <br>
+                if ($result-&gt;num_rows &gt; 0) {<br>
+                    while ($row = $result-&gt;fetch_assoc()) {<br>
+                        echo "id: " . $row["id"] . " - Name: " . $row["name"] . " - Email: " . $row["email"] . "&lt;br&gt;";<br>
+                    }<br>
+                } else {<br>
+                    echo "0 results";<br>
+                }<br>
+<br>
+                <span style="color: darkcyan;">3. Update a Record<br></span>
+                $sql = "UPDATE users SET email='alice_new@example.com' WHERE name='Alice'";<br>
+                <br>
+                if ($conn-&gt;query($sql) === TRUE) {<br>
+                    echo "Record updated successfully";<br>
+                } else {<br>
+                    echo "Error updating record: " . $conn-&gt;error;<br>
+                }<br>
+<br>
+                <span style="color: darkcyan;">4. Delete a Record<br></span>
+                $sql = "DELETE FROM users WHERE name='Alice'";<br>
+                <br>
+                if ($conn-&gt;query($sql) === TRUE) {<br>
+                    echo "Record deleted successfully";<br>
+                } else {<br>
+                    echo "Error deleting record: " . $conn-&gt;error;<br>
+                }<br>
+            </p>
+
+        </div>
+        <div class="practical">
+            <h1>Integrating Forms and Databases</h1>
+            <h2>Basic form submission to a database</h2>
+            <p>
+                Submitting a basic form to a database using PHP involves a few straightforward steps: creating an HTML form, connecting to a database, processing the form data, and inserting the data into the database. Below is a complete example demonstrating how to do this with MySQL.<br>
+<br></p>
+                <span>Step 1: Create a MySQL Database and Table<br></span>
+                <p>
+                First, ensure you have a MySQL database set up.<br>
+<br></p>
+                <span>Step 2: Create the HTML Form<br></span>
+                <p>
+                Next, create an HTML file (index.html) with a form for user input:<br>
+<br></p>
+                <span>Step 3: Process the Form Submission with PHP<br></span>
+                <p>
+                Create a PHP file (submit.php) to handle the form submission and insert the data into the database:<br>
+                &lt;?php<br>
+                // Database connection parameters<br>
+                $servername = "localhost";<br>
+                $username = "your_username";<br>
+                $password = "your_password";<br>
+                $dbname = "my_database";<br>
+                <br>
+                // Create connection<br>
+                $conn = new mysqli($servername, $username, $password, $dbname);<br>
+                <br>
+                // Check connection<br>
+                if ($conn-&gt;connect_error) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                <br>
+                // Check if form is submitted<br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Retrieve and sanitize user input<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$name = htmlspecialchars(trim($_POST['name']));<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$email = htmlspecialchars(trim($_POST['email']));<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Prepare and bind<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt = $conn-&gt;prepare("INSERT INTO users (name, email) VALUES (?, ?)");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;bind_param("ss", $name, $email);<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Execute the statement<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if ($stmt-&gt;execute()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;echo "New record created successfully";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;echo "Error: " . $stmt-&gt;error;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Close the statement<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;close();<br>
+                }<br>
+                <br>
+                // Close the connection<br>
+                $conn-&gt;close();<br>
+                ?&gt;<br>
+                </p>
+                <span>Step 4: Test the Form Submission<br></span>
+                <p>
+                Set Up Your Environment: Ensure you have a web server with PHP and MySQL support (like XAMPP, WAMP, or a live server).<br>
+                Open index.html in your browser.<br>
+                Fill Out the Form and submit it. If everything is set up correctly, you should see a success message, and the data should be inserted into the users table in your database.<br>
+                <br>
+            </p>
+            <h2>Editing data with an Html Form</h2>
+            <p>
+                Editing data with an HTML form in PHP involves retrieving existing data from the database, displaying it in a form for the user to modify, and then updating the database with the new information after submission. Here’s a complete guide on how to implement this.<br>
+<br></p>
+                <span>Step 1: Create the Database and Table<br></span>
+                <p>
+                Make sure you have a MySQL database set up.<br>
+<br></p>
+                <span>Step 2: Populate the Database with Initial Data<br></span>
+                <p>
+                You can insert some initial data for testing:<br>
+                Copy code<br>
+                INSERT INTO users (name, email) VALUES ('John Doe', 'john@example.com');<br>
+<br></p>
+                <span>Step 3: Create a PHP Script to Display the Form<br></span>
+                <p>
+                Create a PHP file (edit.php) that retrieves the user data and displays it in a form for editing:<br>
+                &lt;?php<br>
+                // Database connection parameters<br>
+                $servername = "localhost";<br>
+                $username = "your_username";<br>
+                $password = "your_password";<br>
+                $dbname = "my_database";<br>
+                <br>
+                // Create connection<br>
+                $conn = new mysqli($servername, $username, $password, $dbname);<br>
+                <br>
+                // Check connection<br>
+                if ($conn-&gt;connect_error) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                <br>
+                // Retrieve user data based on ID<br>
+                if (isset($_GET['id'])) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$id = intval($_GET['id']);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt = $conn-&gt;prepare("SELECT name, email FROM users WHERE id = ?");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;bind_param("i", $id);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;execute();<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$result = $stmt-&gt;get_result();<br>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if ($result-&gt;num_rows &gt; 0) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;$user = $result-&gt;fetch_assoc();<br>
+                    } else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;echo "No user found";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;exit;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;close();<br>
+                } else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;echo "No ID provided";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;exit;<br>
+                }<br>
+                <br>
+                $conn-&gt;close();<br>
+                ?&gt;<br>
+                <br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html lang="en"&gt;<br>
+                &lt;head&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Edit User&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Edit User&lt;/h1&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;form action="update.php" method="post"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="hidden" name="id" value="&lt;?php echo $id; ?&gt;"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="name"&gt;Name:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="text" id="name" name="name" value="&lt;?php echo htmlspecialchars($user['name']); ?&gt;" required&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="email" id="email" name="email" value="&lt;?php echo htmlspecialchars($user['email']); ?&gt;" required&gt;&lt;br&gt;&lt;br&gt;<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;input type="submit" value="Update"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/form&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+<br></p>
+                <span>Step 4: Create the Update Script<br></span>
+                <p>
+                Next, create a PHP file (update.php) that processes the form submission and updates the user data in the database:<br>
+                &lt;?php<br>
+                // Database connection parameters<br>
+                $servername = "localhost";<br>
+                $username = "your_username";<br>
+                $password = "your_password";<br>
+                $dbname = "my_database";<br>
+                <br>
+                // Create connection<br>
+                $conn = new mysqli($servername, $username, $password, $dbname);<br>
+                <br>
+                // Check connection<br>
+                if ($conn-&gt;connect_error) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                <br>
+                // Check if form is submitted<br>
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$id = intval($_POST['id']);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$name = htmlspecialchars(trim($_POST['name']));<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$email = htmlspecialchars(trim($_POST['email']));<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Prepare and bind<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt = $conn-&gt;prepare("UPDATE users SET name = ?, email = ? WHERE id = ?");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;bind_param("ssi", $name, $email, $id);<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Execute the statement<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if ($stmt-&gt;execute()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;echo "Record updated successfully";<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;echo "Error updating record: " . $stmt-&gt;error;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Close the statement<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$stmt-&gt;close();<br>
+                }<br>
+                <br>
+                // Close the connection<br>
+                $conn-&gt;close();<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 5: Testing the Edit Functionality<br></span>
+                <p>
+                Create an Initial Page: You can create a simple page that lists users with links to edit them. <br>Here's an example (index.php):<br>
+                &lt;?php<br>
+                // Database connection parameters<br>
+                $conn = new mysqli('localhost', 'your_username', 'your_password', 'my_database');<br>
+                <br>
+                if ($conn-&gt;connect_error) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;die("Connection failed: " . $conn-&gt;connect_error);<br>
+                }<br>
+                <br>
+                $result = $conn-&gt;query("SELECT id, name, email FROM users");<br>
+                ?&gt;<br>
+                <br>
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html lang="en"&gt;<br>
+                &lt;head&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;User List&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br>
+                    &lt;h1&gt;User List&lt;/h1&gt;<br>
+                    &lt;table&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &lt;tr&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;ID&lt;/th&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Name&lt;/th&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Email&lt;/th&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Action&lt;/th&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &lt;/tr&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &lt;?php while ($row = $result-&gt;fetch_assoc()): ?&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &lt;tr&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;?php echo $row['id']; ?&gt;&lt;/td&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;?php echo htmlspecialchars($row['name']); ?&gt;&lt;/td&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;?php echo htmlspecialchars($row['email']); ?&gt;&lt;/td&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;a href="edit.php?id=&lt;?php echo $row['id']; ?&gt;"&gt;Edit&lt;/a&<br>gt;&lt;/td&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&lt;?php endwhile; ?&gt;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;<br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;<br>
+                <br>
+                &lt;?php<br>
+                $conn-&gt;close();<br>
+                ?&gt;<br>
+                Open the index.php page in your browser.<br>
+                <br>
+                Click on the "Edit" link for a user to load the edit form, modify the fields, and submit the form.<br>
+                <br>
+                After submission, you should see a confirmation message indicating that the record has been updated.<br><br>
+            </p>
+        </div>
+    </body>
+</html>

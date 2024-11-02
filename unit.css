@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Oswald', sans-serif;
+    
+}
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgb(0,0,0,0.75),rgb(0,0,0,0.75)),url(bg1.jpg);
+    margin: 0;
+    margin-right: 0;
+    padding: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav_logo{
+    flex: 1;
+}
+.nav_links{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: auto;
+}
+.link a{
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.link a:hover{
+    color:#E89D2A;
+}
+
+.practical{
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    justify-content: center ;
+}
+
+.practical h1, .pracwithwallpaper h1{
+    color: #E88422;
+
+}
+.practical  h2, .pracwithwallpaper h2{
+    color: #714696;
+}
+.written1 p, .written2 p, .pracwithwallpaper p, .practical p{
+    font-family: sans-serif;
+
+}
+.written1 span, .written2 span, .pracwithwallpaper span, .practical span{
+    font-size: 20px;
+}
+.written1{
+    padding-top: 10px;
+    width: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 50px;
+    margin-bottom: 0px;
+    float: left;
+}
+.written2{
+    padding-bottom: 20px;
+    width: 50%;
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    float: right;
+}
+.pracwithwallpaper{
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+}
+table {
+    width: 90%;
+    border-collapse: collapse;
+}
+td {
+    border: 1px solid black;
+    padding: 8px;
+    font-weight: 10;
+    font-size: 1rem;
+    font-family: sans-serif;
+    text-align: left;
+}
+th {
+    background-color: rgba(209, 113, 30, 0.70);
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}

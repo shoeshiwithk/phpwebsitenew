@@ -1,0 +1,435 @@
+<html>
+    <head> 
+        <title>Learning PHP</title>
+        <link rel="stylesheet" href="unit.css">
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav_logo"><img src="logo.png" style="height: 70px;">
+            </div>
+            <ul class="nav_links">
+                <li class="link"><a href="unit1.html">Unit 1</a></li>
+                <li class="link"><a href="index.html">Home</a></li>
+                <li class="link"><a href="unit3.html">Unit 3</a></li>
+                <li class="link"><a href="unit4.html">Unit 4</a></li>
+            </ul>
+        </nav>
+        <div class="Practical" style="padding-top: 110px;">
+            
+            <h1>Functions</h1>
+            <p><br>
+                In PHP, a function is a reusable block of code that performs a specific task. Functions can take parameters and return values. Here’s how to define and use functions in PHP.<br>
+            </p>
+            <h2>Function Definition</h2>
+            <p>
+
+                The basic syntax for defining a function is as follows:<br>
+                function functionName($parameter1, $parameter2) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;// Code to execute<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return $result; // Optional<br>
+                }<br>
+<br>
+                Example<br>
+                Here’s a simple example of a function that adds two numbers:<br>
+                function add($a, $b) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;$sum = $a + $b;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return $sum; // Return the result<br>
+                }<br>
+                <br>
+                // Calling the function<br>
+                $result = add(5, 10);<br>
+                echo "The sum is: " . $result; // Output: The sum is: 15<br>
+<br>
+                Breakdown<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;1.Function Declaration: The function is declared using the function keyword, followed by the function name and parentheses for parameters.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;2.Parameters: In the example, $a and $b are parameters that the function accepts.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;3.Function Body: The code inside the curly braces is executed when the function is called.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;4.Return Statement: The return statement sends the result back to the caller. If a function does not return a value, it will return NULL by default.<br><br>
+            </p>
+        </div>
+        <div class="practical">
+            <h2>Formal Parameter vs Actual Parameter</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Formal Parameters</th>
+                            <th>Actual Parameters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Variables listed in functions declaration.</td>
+                            <td>Values or variables passed to function when called.</td>
+                        </tr>
+                        <tr>
+                            <td>Serves as placeholders for the values that will be used in the function.</td>
+                            <td>Provide the actual data that will be processed by the function.</td>
+                        </tr>
+                        <tr>
+                            <td>Limited to the function where they are defined.	</td>
+                            <td>Can be variables from outside the function or literal values.</td>
+                        </tr>
+                        <tr>
+                            <td>In function add($a, $b), $a and $b are formal parameters.</td>
+                            <td>In add(5, 10), 5 and 10 are actual parameters.</td>
+                        </tr>
+                        <tr>
+                            <td>Can be typed (e.g., type hinting in PHP 7 and later).</td>
+                            <td>Can be of any type (e.g., integer, string, array).</td>
+                        </tr>
+                        <tr>
+                            <td>Used within the function body to perform operations.</td>
+                            <td>Passed during the function call to invoke the function.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h2>Recursion</h2>
+                <p>
+                    Recursion in PHP refers to the process where a function calls itself in order to solve a problem. It is often used to break down complex problems into simpler sub-problems. Here’s a breakdown of how recursion works, along with an example.<br>
+<br>
+                    Key Components of Recursion<br>
+                    Base Case: The condition under which the recursion stops. This prevents infinite loops and eventually leads to a return value.<br>
+                    Recursive Case: The part of the function where the function calls itself with modified arguments.<br>
+                    <br>
+                    Example: Factorial Function<br>
+                    A common example of recursion is calculating the factorial of a number, which is the product of all positive integers up to that number.<br>
+                    &lt;?php<br>
+                    function factorial($n) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Base case<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if ($n &lt;= 1) {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;return 1;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;// Recursive case<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return $n * factorial($n - 1);<br>
+                    }<br>
+                    <br>
+                    // Example usage<br>
+                    echo factorial(5); // Output: 120<br>
+                    ?&gt;<br><br>
+                </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0px;background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h1>String Handling</h1>
+            <h2>Interpolation with Curly Braces</h2>
+            <p>
+                In PHP, interpolation with curly braces is a way to embed variables within double-quoted strings or heredoc strings. This approach allows you to clearly define variable boundaries, especially when dealing with complex expressions or when concatenating strings.<br>
+<br>
+                <span>Basic Interpolation</span><br>
+                When you use double quotes, PHP automatically interpolates variables:<br>
+                $name = "John";<br>
+                echo "Hello, $name!"; // Output: Hello, John!<br>
+<br>
+                <span>Using Curly Braces for Clarity</span><br>
+                You can use curly braces to clearly define the variable, which is particularly useful in the following scenarios:<br>
+                <br>
+                1.When the variable is followed by text: Curly braces help distinguish where the variable name ends.<br>
+                $name = "John";<br>
+                echo "Hello, {$name}Doe!"; // Output: Hello, JohnDoe!<br>
+                <br>
+                2.For array elements: When accessing array elements, curly braces can make it clearer.<br>
+                $arr = ['a' => 'Apple', 'b' => 'Banana'];<br>
+                echo "The first letter is {$arr['a']}."; // Output: The first letter is Apple.<br>
+                <br>
+                3.For complex expressions: When using complex expressions, curly braces help ensure that PHP parses the expression correctly.<br>
+                $a = 5;<br>
+                $b = 10;<br>
+                echo "The sum of a and b is {$a + $b}."; // Output: The sum of a and b is 15.<br><br>
+            </p>
+            <h2>String Operators</h2>
+            <p>
+                In PHP, string operators are used to manipulate and concatenate strings. Here are the primary string operators you'll encounter:<br>
+<br>
+                1. Concatenation Operator (.)<br>
+                The dot operator (.) is used to concatenate two or more strings.<br>
+<br>
+                2. Concatenation Assignment Operator (.=)<br>
+                This operator appends the right string to the left string and assigns the result to the left string.<br>
+<br>
+                3. String Length Operator (strlen())<br>
+                While not an operator per se, the strlen() function is commonly used to get the length of a string.<br>
+<br>
+                4. String Comparison Operators<br>
+                These operators compare strings, typically using the following:<br>
+                <br>
+                ==: Checks if two strings are equal.<br>
+                ===: Checks if two strings are equal and of the same type.<br>
+                !=: Checks if two strings are not equal.<br>
+                !==: Checks if two strings are not equal or of different types.<br>
+                &lt;: Compares strings based on ASCII value (lexicographical order).<br>
+                &gt;: Similar to &lt;, but checks if the first string is greater than the second.<br>
+                &lt;= and &gt;=: Check for less than or equal to, and greater than or equal to, respectively.
+            </p>
+        </div>
+        <div class="practical">
+            <h2>String Functions</h2>
+            <p>
+                PHP offers a variety of built-in string functions that make it easy to manipulate and work with strings. Here’s a list of some commonly used string functions along with brief descriptions and examples.<br>
+<br>
+                1. strlen()<br>
+                Returns the length of a string.<br>
+                $text = "Hello, World!";<br>
+                echo strlen($text); // Output: 13<br>
+<br>
+                2. strtoupper()<br>
+                Converts a string to uppercase.<br>
+                $text = "Hello";<br>
+                echo strtoupper($text); // Output: HELLO<br>
+<br>
+                3. strtolower()<br>
+                Converts a string to lowercase.<br>
+                $text = "HELLO";<br>
+                echo strtolower($text); // Output: hello<br>
+<br>
+                4. trim()<br>
+                Removes whitespace (or other specified characters) from the beginning and end of a string.<br>
+                $text = "   Hello, World!   ";<br>
+                echo trim($text); // Output: "Hello, World!"<br>
+<br>
+                5. substr()<br>
+                Returns a portion of a string.<br>
+                $text = "Hello, World!";<br>
+                echo substr($text, 7, 5); // Output: World<br>
+<br>
+                6. strpos()<br>
+                Finds the position of the first occurrence of a substring in a string.<br>
+                $text = "Hello, World!";<br>
+                echo strpos($text, "World"); // Output: 7<br>
+<br>
+                7. str_replace()<br>
+                Replaces all occurrences of a search string with a replacement string.<br>
+                $text = "Hello, World!";<br>
+                echo str_replace("World", "PHP", $text); // Output: Hello, PHP!<br>
+<br>
+                8. explode()<br>
+                Splits a string by a string delimiter and returns an array.<br>
+                $text = "apple,banana,orange";<br>
+                $fruits = explode(",", $text);<br>
+                print_r($fruits); // Output: Array ( [0] => apple [1] => banana [2] => orange )<br>
+<br>
+                9. implode()<br>
+                Joins array elements into a string using a specified delimiter.<br>
+                $fruits = ["apple", "banana", "orange"];<br>
+                echo implode(", ", $fruits); // Output: apple, banana, orange<br>
+<br>
+                10. strpos()<br>
+                Finds the position of the first occurrence of a substring in a string.<br>
+                $text = "Hello, World!";<br>
+                echo strpos($text, "World"); // Output: 7<br><br>
+            </p>
+            <h1>Arrays</h1>
+            <h2>PHP Arrays</h2>
+            <p>
+                In PHP, arrays are a versatile data structure that allows you to store multiple values in a single variable. PHP supports both indexed (numeric) arrays and associative arrays, which use named keys. Here’s an overview of PHP arrays, including their types, creation, and common functions.<br><br>
+            </p>
+
+                <span>Types of Arrays</span><br>
+            <p>
+                <span>1.Indexed Arrays<br></span>
+                Arrays where the index is a number.<br>
+                Created using the array() function or the short array syntax [].<br>
+                <br>
+                Example:<br>
+                $fruits = array("Apple", "Banana", "Cherry");<br>
+                // or<br>
+                $fruits = ["Apple", "Banana", "Cherry"];<br>
+                <br>
+                echo $fruits[0]; // Output: Apple<br>
+<br>
+                <span>2.Associative Arrays<br></span>
+                Arrays where the index is a string (key).<br>
+                Useful for storing data in key-value pairs.<br>
+                <br>
+                Example:<br>
+                $person = [<br>
+                    "first_name" => "John",<br>
+                    "last_name" => "Doe",<br>
+                    "age" => 30<br>
+                ];<br>
+                <br>
+                echo $person["first_name"]; // Output: John<br>
+<br>
+                <span>3.Multidimensional Arrays<br></span>
+                Arrays that contain one or more arrays.<br>
+                Useful for representing complex data structures.<br>
+                <br>
+                Example:<br>
+                $contacts = [<br>
+                    "John" => ["email" => "john@example.com", "phone" => "123-456-7890"],<br>
+                    "Jane" => ["email" => "jane@example.com", "phone" => "987-654-3210"]<br>
+                ];<br>
+                <br>
+                echo $contacts["John"]["email"]; // Output: john@example.com<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0; background-color: rgba(209, 113, 30, 0.60);">
+            <h2>Accessing array elements</h2>
+            <p>
+                You can access elements by their index (for indexed arrays) or key (for associative arrays).<br>
+<br>
+                Example:<br>
+                echo $fruits[1]; // Output: Banana<br>
+                echo $person["age"]; // Output: 30<br><br>
+            </p>
+            <h2>Deleting from array</h2>
+            <p>
+                In PHP, you can delete elements from arrays using several functions and methods. Here's how to remove elements from both indexed and associative arrays.<br>
+<br></p>
+            <span>1. Using unset()<br></span>
+            <p>
+                The unset() function removes a specific element from an array by its index or key.<br>
+                <br>
+                Example with Indexed Arrays:<br>
+                $fruits = ["Apple", "Banana", "Cherry"];<br>
+                unset($fruits[1]); // Removes "Banana"<br>
+                print_r($fruits); // Output: Array ( [0] => Apple [2] => Cherry )<br>
+<br>
+                Example with Associative Arrays:<br>
+                $person = [<br>
+                    "first_name" => "John",<br>
+                    "last_name" => "Doe",<br>
+                    "age" => 30<br>
+                ];<br>
+                unset($person["age"]); // Removes the "age" key<br>
+                print_r($person); // Output: Array ( [first_name] => John [last_name] => Doe )<br>
+<br></p>
+            <span>2. Using array_splice()<br></span>
+            <p>
+                The array_splice() function removes a portion of the array and can also replace it with new elements.<br>
+                <br>
+                Example:<br>
+                $fruits = ["Apple", "Banana", "Cherry", "Date"];<br>
+                array_splice($fruits, 1, 2); // Removes 2 elements starting from index 1<br>
+                print_r($fruits); // Output: Array ( [0] => Apple [1] => Date )<br>
+<br></p>
+            <span>3. Using array_pop()<br></span>
+            <p>
+                The array_pop() function removes the last element from an array.<br>
+                <br>
+                Example:
+                $fruits = ["Apple", "Banana", "Cherry"];<br>
+                $lastFruit = array_pop($fruits); // Removes "Cherry"<br>
+                print_r($fruits); // Output: Array ( [0] => Apple [1] => Banana )<br>
+<br></p>
+            <span>4. Using array_shift()<br></span>
+            <p>
+                The array_shift() function removes the first element from an array.<br>
+                <br>
+                Example:<br>
+                $fruits = ["Apple", "Banana", "Cherry"];<br>
+                $firstFruit = array_shift($fruits); // Removes "Apple"<br>
+                print_r($fruits); // Output: Array ( [0] => Banana [1] => Cherry )<br>
+<br></p>
+            <span>5. Using array_filter()<br></span>
+            <p>
+                You can also remove elements conditionally using array_filter(). This function creates a new array with elements that pass a given test.<br>
+                <br>
+                Example:<br>
+                $numbers = [1, 2, 3, 4, 5];<br>
+                $evenNumbers = array_filter($numbers, function($num) {<br>
+                    return $num % 2 == 0; // Keep only even numbers<br>
+                });<br>
+                print_r($evenNumbers); // Output: Array ( [1] => 2 [3] => 4 )<br>
+            </p>
+        </div>
+        <div class="practical">
+            <h2>Iterating with each() and foreach()</h2>
+            <span>1. each()</span>
+            <p>
+                The each() function was used to return the current key and value pair from an array and move the internal pointer forward. However, it has been deprecated as of PHP 7.2, so it’s recommended to use foreach instead.<br>
+<br>
+                Syntax<br>
+                list($key, $value) = each($array);<br>
+<br>
+                Example<br>
+                $fruits = ["Apple", "Banana", "Cherry"];<br>
+                reset($fruits); // Reset the array pointer<br>
+                <br>
+                while (list($key, $value) = each($fruits)) {<br>
+                    echo "$key: $value\n";<br>
+                }<br>
+                // Output:<br>
+                // 0: Apple<br>
+                // 1: Banana<br>
+                // 2: Cherry<br>
+            </p>
+            <span>2. foreach()</span>
+            <p>
+                The foreach construct is used to iterate over arrays in a straightforward way. It is commonly used because of its simplicity and readability.<br>
+<br>
+                Syntax:<br>
+                foreach ($array as $value) {<br>
+                    // Code to execute for each $value<br>
+                }<br>
+<br>
+                You can also get both keys and values:<br>
+                foreach ($array as $key => $value) {<br>
+                    // Code to execute with $key and $value<br>
+                }<br>
+<br>
+                Example:<br>
+                $fruits = ["apple", "banana", "cherry"];<br>
+                <br>
+                foreach ($fruits as $fruit) {<br>
+                    echo $fruit . "\n";<br>
+                }<br>
+                <br>
+                $associativeArray = ["a" => "apple", "b" => "banana", "c" => "cherry"];<br>
+                <br>
+                foreach ($associativeArray as $key => $value) {<br>
+                    echo "$key: $value\n";<br>
+                }<br><br>
+            </p>
+            <h2>Iterative functions</h2>
+            <p>
+                In PHP, the functions current(), next(), prev(), reset(), and end() are used to manipulate the internal pointer of an array. These functions allow you to traverse arrays in a more controlled manner than simply using loops. Here's a breakdown of each function:<br>
+<br></p>
+            <span>1. current()<br></span>
+            <p>
+                Returns the value of the element pointed to by the internal pointer of the array without advancing the pointer.<br>
+                <br>
+                Example:<br>
+                $array = [1, 2, 3, 4, 5];<br>
+                echo current($array); // Outputs: 1<br>
+<br></p>
+            <span>2. next()<br></span>
+            <p>
+                Advances the internal pointer to the next element in the array and returns its value. If the pointer is already at the end, it returns false.<br>
+                <br>
+                Example:<br>
+                $array = [1, 2, 3, 4, 5];<br>
+                next($array); // Moves pointer to the second element<br>
+                echo current($array); // Outputs: 2<br>
+<br></p>
+            <span>3. prev()<br></span>
+            <p>
+                Moves the internal pointer to the previous element in the array and returns its value. If the pointer is already at the beginning, it returns false.<br>
+                <br>
+                Example:<br>
+                $array = [1, 2, 3, 4, 5];<br>
+                next($array); // Move to the second element<br>
+                next($array); // Move to the third element<br>
+                echo prev($array); // Outputs: 2<br>
+<br></p>
+            <span>4. reset()<br></span>
+            <p>
+                Resets the internal pointer of the array to the first element and returns its value. If the array is empty, it returns false.<br>
+                <br>
+                Example:<br>
+                $array = [1, 2, 3, 4, 5];<br>
+                next($array); // Move to the second element<br>
+                echo reset($array); // Outputs: 1<br>
+<br></p>
+            <span>5. end()<br></span>
+            <p>
+                Advances the internal pointer to the last element of the array and returns its value. If the array is empty, it returns false.<br>
+                <br>
+                Example:<br>
+                $array = [1, 2, 3, 4, 5];<br>
+                echo end($array); // Outputs: 5<br><br>
+            </p>
+        </div>
+            
+</body>
+</html>

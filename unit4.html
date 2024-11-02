@@ -1,0 +1,612 @@
+<html>
+    <head> 
+        <title>Learning PHP</title>
+        <link rel="stylesheet" href="unit.css">
+        <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="nav_logo"><img src="logo.png" style="height: 70px;">
+            </div>
+            <ul class="nav_links">
+                <li class="link"><a href="unit1.html">Unit 1</a></li>
+                <li class="link"><a href="unit2.html">Unit 2</a></li>
+                <li class="link"><a href="unit3.html">Unit 3</a></li>
+                <li class="link"><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+        <div class="practical" style="padding-top: 110px;">
+            <h1>Maintaing User State</h1>
+            <h2>Introduction to cookies</h2>
+            <p>
+                Cookies are small pieces of data stored on the user's computer by their web browser while browsing a website. They are commonly used to remember information about the user between sessions or for tracking purposes. Here’s a brief introduction to cookies, how they work, and how to use them in PHP.<br>
+<br></p>
+                <span>What Are Cookies?<br></span>
+                <p>
+                <span>Definition:</span><br>
+                Cookies are text files created by web servers and stored on the client's computer. They contain data about the user, which can be used for various purposes.<br>
+                <br>
+                <span>Purpose:</span><br> Cookies can be used to:<br>
+                Remember user preferences (like language settings).<br>
+                Keep users logged in to a website.<br>
+                Track user behavior for analytics.<br>
+                Manage shopping carts in e-commerce applications.<br>
+                </p><br>
+                <span>How Cookies Work<br></span>
+                <p>
+                Setting Cookies: When a user visits a website, the server can send a cookie to the user's browser, which stores it.<br>
+                Sending Cookies Back: On subsequent visits to the same website, the browser sends the stored cookies back to the server, allowing the server to recognize the user.<br>
+                Expiration: Cookies can have an expiration date. Once a cookie expires, it is deleted from the user's browser.<br>
+                </p><br>
+                <span>Cookie Attributes<br></span>
+                <p>
+                Cookies have several attributes:<br>
+                <br>
+                Name: The key used to access the cookie.<br>
+                Value: The data stored in the cookie.<br>
+                Domain: The domain for which the cookie is valid.<br>
+                Path: The specific path on the domain where the cookie is accessible.<br>
+                Expiration: The date/time when the cookie should expire.<br>
+                Secure: If true, the cookie will only be sent over secure (HTTPS) connections.<br>
+                HttpOnly: If true, the cookie cannot be accessed via JavaScript, which can help prevent XSS attacks.<br><br>
+            </p>
+            <h2>Setting time in a cookie with PHP</h2>
+            <p>
+                Setting the expiration time for a cookie in PHP is essential for controlling how long the cookie should be stored on the user's browser. Here’s how to do it step-by-step.<br>
+<br>
+                Setting a Cookie with Expiration Time<br>
+                You can set a cookie in PHP using the setcookie() function, which allows you to specify various parameters, including the expiration time. The expiration time is set using a Unix timestamp.<br>
+                <br>
+                Basic Syntax<br>
+                setcookie(name, value, expire, path, domain, secure, httponly);<br>
+                <br>
+                name: The name of the cookie.<br>
+                value: The value of the cookie.<br>
+                expire: The expiration time (as a Unix timestamp).<br>
+                path: The path on the server where the cookie will be available.<br>
+                domain: The domain that the cookie is available to.<br>
+                secure: If true, the cookie will only be transmitted over a secure HTTPS connection.<br>
+                httponly: If true, the cookie will not be accessible via JavaScript.<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0px;background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h2>Deleting a cookie</h2>
+            <p>
+                To delete a cookie, you can set its expiration time to a point in the past:<br>
+<br>
+                &lt;?php<br>
+                setcookie("username", "", time() - 3600, "/"); // This will delete the cookie<br>
+                echo "Cookie has been deleted!";<br>
+                ?&gt;<br><br>
+            </p>
+            <h1>Creating session cookie</h1>
+            <p>
+                Creating a session cookie in PHP is straightforward and involves using the session_start() function. A session cookie is temporary and is used to track user sessions without requiring persistent data storage on the client’s machine. Here’s a step-by-step guide on how to create and manage session cookies in PHP.
+            </p>
+
+            <h2>What Is a Session Cookie?</h2>
+            <span>Session Cookie:</span>
+            <p>                
+                A cookie that is stored in memory and is deleted when the user closes their browser. It does not have a specified expiration time.<br>
+                Use Case: Session cookies are commonly used to maintain state in web applications, such as keeping users logged in as they navigate through different pages.<br>
+                Steps to Create a Session Cookie<br>
+                <br></p>
+                <span>Step 1: Start a PHP Session<br></span>
+                <p>
+                To create a session cookie, you first need to start a session using session_start(). This function initializes a new session or resumes an existing session.<br>
+                <br>
+                &lt;?php<br>
+                // Start the session<br>
+                session_start();<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 2: Store Data in the Session<br></span>
+                <p>
+                You can store data in the session using the $_SESSION superglobal array. This data will be available throughout the user's session.<br>
+                <br>
+                &lt;?php<br>
+                session_start();<br>
+                <br>
+                // Store data in the session<br>
+                $_SESSION['username'] = 'JohnDoe';<br>
+                $_SESSION['email'] = 'john@example.com';<br>
+                <br>
+                echo "Session variables are set.";<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 3: Access Session Data<br></span>
+                <p>
+                You can access the session data on any page after starting the session:<br>
+                <br>
+                &lt;?php<br>
+                session_start();<br>
+                <br>
+                if (isset($_SESSION['username'])) {<br>
+                    echo "Welcome back, " . $_SESSION['username'] . "!";<br>
+                } else {<br>
+                    echo "Hello, new user!";<br>
+                }<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 4: Destroy the Session<br></span>
+                <p>
+                When the user logs out or when you want to clear the session data, you can destroy the session. This will also delete the session cookie.<br>
+                <br>
+                &lt;?php<br>
+                session_start();<br>
+                <br>
+                // Unset all session variables<br>
+                $_SESSION = [];<br>
+                <br>
+                // Destroy the session<br>
+                session_destroy();<br>
+                <br>
+                echo "Session has been destroyed.";<br>
+                ?&gt;<br><br>
+            </p>
+        </div>
+        <div class="practical">
+            <h1>Introduction to sessions</h1>
+            <p>
+                Sessions in PHP provide a way to store user-specific data across multiple pages, allowing you to maintain state in web applications. Unlike cookies, which store data on the client side, sessions store data on the server side, and a unique session ID is sent to the client to identify the session.<br>
+<br></p>
+                <span>What Are Sessions?<br></span>
+                <p>
+                1.Definition: A session is a way to store information (in variables) to be used across multiple pages. This is particularly useful for managing user authentication, preferences, and temporary data.<br>
+                2.Duration: Sessions typically last until the user closes their browser or until the session times out based on server settings.<br>
+                <br></p>
+                <span>How Sessions Work<br></span>
+                <p>
+                1.Session Start: When a user first visits your website, you can start a session using the session_start() function. This creates a new session or resumes an existing one.<br>
+                2.Session ID: PHP generates a unique session ID that is sent to the user's browser as a cookie. This ID is used to retrieve the session data on subsequent requests.<br>
+                3.Storing Data: You can store data in the session using the $_SESSION superglobal array.<br>
+                4.Accessing Data On any page where the session is active, you can access the session data using the same $_SESSION array.<br>
+                5.Destroying Sessions: When the user logs out or you want to clear session data, you can destroy the session, which also removes the session cookie from the user's browser.<br>
+                <br></p>
+                <span>Common Use Cases for Sessions<br></span>
+                <p>
+                1.User Authentication Keeping users logged in as they navigate your site.<br>
+                2.Shopping Carts: Storing items in a user's shopping cart until checkout.<br>
+                3.User Preferences: Remembering user settings or preferences during their visit.<br><br>
+            </p>
+            <h2>Starting a session</h2>
+            <p>
+                To start a session in PHP, you use the session_start() function. Here’s a step-by-step guide on how to do it:<br><br></p>
+                <span>Step 1: Call session_start()</span><br>
+                <p>At the very beginning of your PHP script (before any HTML output), you need to call session_start(). This function checks if a session already exists for the user. If not, it creates a new session.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                ?&gt;<br><br></p>
+                <span>Step 2: Storing Session Data</span><br>
+                <p>After starting the session, you can store data in the $_SESSION superglobal array. This data will persist across multiple pages.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                $_SESSION['username'] = 'JohnDoe'; // Store data in the session<br>
+                ?&gt;<br><br></p>
+                <span>Step 3: Accessing Session Data</span><br>
+                <p>To access the session data on another page, you must again call session_start() and then you can use the $_SESSION array.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                echo 'Hello, ' . $_SESSION['username']; // Outputs: Hello, JohnDoe<br>
+                ?&gt;<br><br></p>
+                <span>Step 4: Ending a Session</span><br>
+                <p>When you want to end a session (e.g., when a user logs out), use session_destroy() to clear the session data and remove the session from the server.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                session_unset(); // Remove all session variables<br>
+                session_destroy(); // Destroy the session<br>
+                ?&gt;<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="padding-top:0px;margin-top:0; background-color: rgba(209, 113, 30, 0.60);">
+            <h2>Registering session variables</h2>
+            <p>
+                Registering session variables in PHP is a straightforward process. Once you've started a session with session_start(), you can store data in the $_SESSION superglobal array. Here’s how to do it step by step:<br>
+<br>
+                Step-by-Step Guide to Register Session Variables<br>
+<br></p>
+                <span>Step 1: Start the Session<br></span>
+                <p>
+                At the beginning of your PHP script, call session_start() to initiate the session.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 2: Register Session Variables<br></span>
+                <p>
+                You can register session variables by assigning values to keys in the $_SESSION array. For example:<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Register session variables<br>
+                $_SESSION['username'] = 'JohnDoe';<br>
+                $_SESSION['email'] = 'johndoe@example.com';<br>
+                $_SESSION['logged_in'] = true;<br>
+                ?&gt;<br>
+                In this example, we’ve registered three session variables: username, email, and logged_in.<br>
+                <br></p>
+                <span>Step 3: Accessing Session Variables<br></span>
+                <p>
+                To access these session variables on the same page or on different pages, you need to call session_start() again. Then, you can retrieve the values from the $_SESSION array.<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Access session variables<br>
+                echo 'Username: ' . $_SESSION['username']; // Outputs: Username: JohnDoe<br>
+                echo 'Email: ' . $_SESSION['email']; // Outputs: Email: johndoe@example.com<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 4: Modifying Session Variables<br></span>
+                <p>
+                You can modify existing session variables just like you would with a regular variable:<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Modify a session variable<br>
+                $_SESSION['username'] = 'JaneDoe'; // Change username<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 5: Unsetting Session Variables<br></span>
+                <p>
+                If you want to remove a specific session variable, use the unset() function:<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Unset a specific session variable<br>
+                unset($_SESSION['email']); // Remove the email session variable<br>
+                ?&gt;<br>
+<br></p>
+                <span>Step 6: Destroying the Session<br></span>
+                <p>
+                To completely clear all session variables and destroy the session, use session_destroy():<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                session_unset(); // Clear all session variables<br>
+                session_destroy(); // Destroy the session<br>
+                ?&gt;<br><br>
+            </p>
+        </div>
+        <div class="practical">
+            <h2>Passing session Ids</h2>
+            <p>
+                Passing session IDs in PHP can be done in a few different ways, primarily through cookies and URL parameters. Here’s an overview of how to handle session IDs effectively.<br>
+<br></p>
+                <span>1. Using Cookies (Default Method)<br></span>
+                <p>
+                By default, PHP uses cookies to store the session ID. When you call session_start(), PHP automatically sends a cookie named PHPSESSID to the user's browser, which it uses to identify the session on subsequent requests.<br>
+                <br>
+                Example:<br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Register a session variable<br>
+                $_SESSION['username'] = 'JohnDoe';<br>
+                ?&gt;<br>
+                In this case, the session ID is automatically managed by PHP through cookies.<br>
+                <br></p>
+                <span>2. Passing Session IDs via URL<br></span>
+                <p>
+                If cookies are disabled in the user's browser, you can pass the session ID through the URL. <br>You can do this by using the session_id() function to retrieve the current session ID and append it to your URLs.<br>
+                <br>
+                Example:<br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Get the session ID<br>
+                $session_id = session_id();<br>
+                <br>
+                // Create a link with the session ID as a URL parameter<br>
+                echo '&lt;a href="next_page.php?session_id=' . $session_id . '"&gt;Go to Next Page&lt;/a&gt;';<br>
+                ?&gt;<br><br>
+            </p>
+            <h2>Increase session expire time</h2>
+            <p>
+                To increase the session expiration time in PHP, you can adjust the session cookie parameters and the session's lifetime settings. Here's how to do it step-by-step:<br>
+<br></p>
+                <span>1. Set Cookie Parameters<br></span>
+                <p>
+                You can configure session cookie parameters using session_set_cookie_params(). This function allows you to specify how long the session cookie should last.<br>
+                <br>
+                Example:<br>
+                &lt;?php<br>
+                // Set session cookie parameters<br>
+                $cookie_lifetime = 3600; // 1 hour (3600 seconds)<br>
+                $cookie_path = '/'; // Available within the entire domain<br>
+                $cookie_secure = true; // Use only over HTTPS<br>
+                $cookie_httponly = true; // Accessible only through the HTTP protocol<br>
+                <br>
+                session_set_cookie_params($cookie_lifetime, $cookie_path, '', $cookie_secure,<br> $cookie_httponly);<br>
+                session_start(); // Start the session<br>
+                ?&gt;<br>
+<br></p>
+                <span>2. Set Session Timeout<br></span>
+                <p>
+                You can also set a timeout for session data by checking the last activity time. Here’s an example of how to implement this:<br>
+                <br>
+                &lt;?php<br>
+                session_start(); // Start the session<br>
+                <br>
+                // Set session timeout duration (e.g., 1 hour)<br>
+                $timeout_duration = 3600;<br>
+                <br>
+                // Check if the session variable for last activity is set<br>
+                if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] &gt; <br>$timeout_duration)) {<br>
+                    // Last activity was more than the timeout duration<br>
+                    session_unset(); // Unset all session variables<br>
+                    session_destroy(); // Destroy the session<br>
+                }<br>
+                <br>
+                // Update last activity time<br>
+                $_SESSION['LAST_ACTIVITY'] = time();<br>
+                <br>
+                // Your code here<br>
+                ?&gt;<br>
+<br></p>
+                <span>3. Configuration in php.ini<br></span>
+                <p>
+                If you want to set a default session timeout for all sessions, you can also configure this in your php.ini file:<br>
+                <br>
+                ; Session timeout (in seconds)<br>
+                session.gc_maxlifetime = 3600<br><br>
+            </p>
+        </div>
+        <div class="pracwithwallpaper" style="margin-top:0px;background-image: linear-gradient(rgb(255,255,255,0.60),rgb(255,255,255,0.60)),url(orange-7276122.jpg); z-index: 0; background-size: cover;">
+            <h1>Working with File System</h1>
+            <h2>Understanding PHP file permissions</h2>
+                <span>1. File Permission Basics<br></span>
+                <p>
+                File permissions in Unix-like systems (including Linux) are typically represented using three types of permissions for three categories of users:<br>
+                <br>
+                Owner: The user who owns the file.<br>
+                Group: A group of users who share certain permissions.<br>
+                Others: All other users who are not the owner or in the group.<br>
+                <br></p>
+                <span>2. Types of Permissions<br></span>
+                <p>
+                The three types of permissions are:<br>
+                <br>
+                Read (r): Allows the user to read the contents of the file.<br>
+                Write (w): Allows the user to modify the file.<br>
+                Execute (x): Allows the user to run the file as a program (for scripts).<br>
+                <br></p>
+                <span>3. Permission Representation<br></span>
+                <p>
+                Permissions can be represented in two ways:<br>
+                <br>
+                Symbolic Representation: e.g., rwxr-xr--<br>
+                <br>
+                The first character indicates the file type (e.g., - for a file, d for a directory).<br>
+                The next three characters represent the owner's permissions.<br>
+                The following three characters represent the group's permissions.<br>
+                The last three characters represent others' permissions.<br>
+                Octal Representation: Numeric values assigned to each permission type:<br>
+                <br>
+                Read = 4<br>
+                Write = 2<br>
+                Execute = 1<br>
+                You can combine these to set permissions. For example, 755 means:<br>
+                Owner: Read, Write, Execute (4 + 2 + 1 = 7)<br>
+                Group: Read, Execute (4 + 1 = 5)<br>
+                Others: Read, Execute (4 + 1 = 5)<br>
+                <br></p>
+                <span>4. Setting File Permissions in PHP<br></span>
+                <p>
+                You can set file permissions in PHP using the chmod() function. Here’s how:<br>
+                <br>
+                $file = 'example.txt';<br>
+                <br>
+                // Set permissions to 755<br>
+                if (chmod($file, 0755)) {<br>
+                    echo 'Permissions changed successfully!';<br>
+                } else {<br>
+                    echo 'Failed to change permissions.';<br>
+                }<br>
+<br></p>
+                <span>5. Checking File Permissions<br></span>
+                <p>
+                You can check the current permissions of a file using the fileperms() function:<br>
+                <br>
+                $file = 'example.txt';<br>
+                $perms = fileperms($file);<br>
+                <br>
+                // Check the permissions<br>
+                if (($perms & 0xC000) == 0xC000) {<br>
+                    $type = 'socket';<br>
+                } elseif (($perms & 0xA000) == 0xA000) {<br>
+                    $type = 'symbolic link';<br>
+                } elseif (($perms & 0x8000) == 0x8000) {<br>
+                    $type = 'regular file';<br>
+                } elseif (($perms & 0x6000) == 0x6000) {<br>
+                    $type = 'block device';<br>
+                } elseif (($perms & 0x4000) == 0x4000) {<br>
+                    $type = 'directory';<br>
+                } elseif (($perms & 0x2000) == 0x2000) {<br>
+                    $type = 'character device';<br>
+                } else {<br>
+                    $type = 'unknown';<br>
+                }<br>
+                <br>
+                // Output the permissions<br>
+                echo "File type: $type\n";<br>
+                echo "Permissions: " . substr(sprintf('%o', $perms), -4);<br><br>
+            </p>
+        </div>
+        <div class="practical">
+            <h2>Opening and Closing a file</h2>
+            <span>Opening a file</span>
+            <p>
+                You can open a file in PHP using the fopen() function. This function requires two parameters: the filename and the mode.<br>
+<br>
+                Modes for fopen()<br>
+                r: Open for reading only (the file must exist).<br>
+                r+: Open for reading and writing (the file must exist).<br>
+                w: Open for writing only (creates a new file or truncates the existing file).<br>
+                w+: Open for reading and writing (creates a new file or truncates the existing file).<br>
+                a: Open for writing only (creates a new file if it does not exist, appends to the file).<br>
+                a+: Open for reading and writing (creates a new file if it does not exist, appends to the file).<br>
+                x: Create and open for writing (fails if the file already exists).<br>
+                x+: Create and open for reading and writing (fails if the file already exists).<br>
+                <br></p>
+                <span>Writing to a File<br></span>
+                <p>
+                Once the file is opened, you can write data to it using functions like fwrite() or fputs().<br>
+                <br>
+                Example of Writing to a File<br>
+                &lt;?php<br>
+                $data = "Hello, World!\n";<br>
+                <br>
+                // Write to the file<br>
+                fwrite($file, $data);<br>
+                <br>
+                // Close the file<br>
+                fclose($file);<br>
+                ?&gt;<br>
+<br></p>
+                <span>Reading from a File<br></span>
+                <p>
+                To read data from a file, you can use fgets(), fread(), or fgetcsv() for CSV files.<br>
+                <br>
+                Example of Reading a File<br>
+                &lt;?php<br>
+                // Open the file for reading<br>
+                $file = fopen($filename, 'r');<br>
+                <br>
+                if ($file) {<br>
+                    // Read the file line by line<br>
+                    while (($line = fgets($file)) !== false) {<br>
+                        echo $line;<br>
+                    }<br>
+                    <br>
+                    // Close the file<br>
+                    fclose($file);<br>
+                } else {<br>
+                    echo 'Failed to open file for reading.';<br>
+                }<br>
+                ?&gt;<br><br>
+            </p>
+            <span>Closing a file</span>
+            <p>It’s important to close a file after you’re done working with it to free up system resources. You can do this with the fclose() function.<br><br></p>
+            <h1>File System and Directory Functions</h1>
+            <h2>1. File Functions</h2>
+                <span>a. Checking File Existence<br></span>
+                <p>
+                file_exists(): Checks if a file or directory exists.<br>
+                $filename = 'example.txt';<br>
+                <br>
+                if (file_exists($filename)) {<br>
+                    echo 'File exists.';<br>
+                } else {<br>
+                    echo 'File does not exist.';<br>
+                }<br>
+<br></p>
+                <span>b. Getting File Size<br></span>
+                <p>
+                filesize(): Returns the size of a file in bytes.<br>
+                $size = filesize($filename);<br>
+                echo "File size: $size bytes.";<br>
+<br></p>
+                <span>c. Reading a File<br></span>
+                <p>
+                file_get_contents(): Reads the entire file into a string.<br>
+                $content = file_get_contents($filename);<br>
+                echo $content;<br>
+<br></p>
+                <span>d. Writing to a File<br></span>
+                <p>
+                file_put_contents(): Writes data to a file (creates or overwrites).<br>
+                $data = "Hello, World!";<br>
+                file_put_contents($filename, $data);<br><br>
+            </p>
+            <h2>2. Directory Functions<br></h2>
+            <span>a. Creating a Directory</span>
+            <p>
+                mkdir(): Creates a new directory.<br>
+                $dir_name = 'new_directory';<br>
+                if (mkdir($dir_name)) {<br>
+                    echo 'Directory created successfully.';<br>
+                } else {<br>
+                    echo 'Failed to create directory.';<br>
+                }<br>
+                <br></p>
+                <span>b. Removing a Directory<br></span>
+                <p>
+                rmdir(): Removes an empty directory.<br>
+                if (rmdir($dir_name)) {<br>
+                    echo 'Directory removed successfully.';<br>
+                } else {<br>
+                    echo 'Failed to remove directory.';<br>
+                }<br>
+<br></p>
+                <span>c. Checking if a Directory Exists<br></span>
+                <p>
+                is_dir(): Checks if a specified path is a directory.<br>
+                if (is_dir($dir_name)) {<br>
+                    echo 'It is a directory.';<br>
+                } else {<br>
+                    echo 'It is not a directory.';<br>
+                }<br>
+<br></p>
+                <span>d. Reading a Directory<br></span>
+                <p>
+                scandir(): Returns an array of files and directories in a specified directory.<br>
+                $files = scandir($dir_name);<br>
+                print_r($files);<br><br>
+            </p>
+            <h2>3. File and Directory Permissions</h2>
+                <span>a. Changing File Permissions<br></span>
+                <p>
+                chmod(): Changes the permissions of a file or directory.<br>
+                chmod($filename, 0755); // Sets permissions to rwxr-xr-x<br>
+<br></p>
+                <span>b. Getting File Permissions<br></span>
+                <p>
+                fileperms(): Returns the permissions of a file or directory.<br>
+                $perms = fileperms($filename);<br>
+                echo 'Permissions: ' . substr(sprintf('%o', $perms), -4);<br><br>
+            </p>
+
+            <h2>4. Deleting a File</h2>
+            <p>
+                unlink(): Deletes a file.<br>
+                if (unlink($filename)) {<br>
+                    echo 'File deleted successfully.';<br>
+                } else {<br>
+                    echo 'Failed to delete file.';<br>
+                }<br><br>
+            </p>
+            <h2>5. Renaming a File or Directory</h2>
+            <p>
+                rename(): Renames a file or directory.<br>
+                $new_name = 'renamed_example.txt';<br>
+                if (rename($filename, $new_name)) {<br>
+                    echo 'File renamed successfully.';<br>
+                } else {<br>
+                    echo 'Failed to rename file.';<br>
+                }<br><br>
+            </p>
+            <h2>6. Path Information Functions</h2>
+            <span>a. Getting File Information</span>
+            <p>
+                pathinfo(): Returns information about a file path.<br>
+                $path_info = pathinfo($new_name);<br>
+                print_r($path_info);<br>
+                <br></p>
+                <span>b. Getting the Current Working Directory<br></span>
+                <p>
+                getcwd(): Returns the current working directory.<br>
+                $current_dir = getcwd();<br>
+                echo "Current Directory: $current_dir";<br><br>
+            </p>
+        </div>
+    </body>
+</html>
